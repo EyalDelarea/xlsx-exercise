@@ -1,0 +1,19 @@
+{
+  "name": "xlsxScript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "parseFile": "node ./script.js && echo 'Script has finished running'",
+    "script" : "npm run parseFile"
+  },
+  "dependencies": {
+    "moment": "^2.29.1",
+    "prompt": "^1.2.0",
+    "xlsx": "^0.17.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
