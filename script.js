@@ -13,14 +13,6 @@ var prompt = require("prompt");
  * Output - Excel file ready to be imported to SQL 
  */
 
-/**
- * Error prune:
- * 1.Different date foramts and nulls
- * 2.Table placemnt inside the file
- * 3.phone number formats
- * 4.empty fields in the xls table
- */
-
 const DEFAULT_FILE_PATH = "./files/jimalaya.xlsx";
 const DEFAULT_CLUBID = 2400;
 const DEFAULT_OUTPUTNAME = "output";
