@@ -1,3 +1,8 @@
 
 node_modules
 output.xlsx
+files
+
+
+# ignore all logs
+*.log

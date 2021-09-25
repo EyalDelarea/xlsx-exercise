@@ -29,7 +29,6 @@ module.exports.xlsxToArray = (workSheet) => {
   //save range and delete it from the object
   const range = extaractange(workSheet["!ref"]);
   delete workSheet["!ref"];
-  workSheet.delete;
 
   var sheetAsArray = [];
   var attributes = [];
