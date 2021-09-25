@@ -1,4 +1,4 @@
-# Arbox Home Assignemnt 
+# Arbox Home Assignment 
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/23456142/134665189-6f57de60-8575-4ca3-8ba9-1a293f0746e3.png" width="250">
