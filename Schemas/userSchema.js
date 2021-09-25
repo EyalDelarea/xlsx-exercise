@@ -29,7 +29,7 @@ module.exports.userSchema = (row, clubID, index) => {
 const validateUnique = (userID) => {
   if (!map.has(userID)) {
     map.set(userID, true);
-    return true;
+    return userID;
   } else {
     validateUnique(generateRandomID());
   }

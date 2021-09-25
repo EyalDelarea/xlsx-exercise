@@ -93,31 +93,31 @@ module.exports.xlsxToArray = (workSheet) => {
  *
  * @param {*} range : Table range Ex. -A to G;
  * @param {*} cell  current cell
- * @param {*} prev_validater previous cell to compare to next cell
+ * @param {*} prev_validator previous cell to compare to next cell
  * @returns
  */
-const validateNonEmptyFields = (range, cell, prev_validater) => {
+const validateNonEmptyFields = (range, cell, prev_validator) => {
   const start = range[0].charCodeAt(0);
   const end = range[1].charCodeAt(0);
   const modulo = end - start - 1;
 
-  validater = cell.charCodeAt(0) % modulo;
+  validator = cell.charCodeAt(0) % modulo;
   //first row
-  if (prev_validater === undefined) {
+  if (prev_validator === undefined) {
     //validate cell start with the range
     if (cell[0] !== range[0]) {
       throw new Error(
         `Empty cell found in ${range[0]}${cell.substring(1, cell.length)}`
       );
     } else {
-      return validater;
+      return validator;
     }
   } else {
     //validate there are no gaps
-    var nextChar = (prev_validater + 1) % modulo;
+    var nextChar = (prev_validator + 1) % modulo;
     //corrsponding next char
-    if (nextChar === validater) {
-      return validater;
+    if (nextChar === validator) {
+      return validator;
     } else {
       var charCode = cell[0].charCodeAt(0);
       var prevChar = String.fromCharCode(charCode - 1);
