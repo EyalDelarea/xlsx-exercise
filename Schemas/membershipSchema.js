@@ -21,14 +21,14 @@ module.exports.membershipSchema = (forignKey, row, index) => {
   return [
     index,
     forignKey,
-    validateDate(membershp_start_date),
-    validateDate(membership_end_date),
+    validateDate(membershp_start_date,row,index),
+    validateDate(membership_end_date,row,index),
     membership_name,
   ];
 };
 
 //covert dates into accetable formats (YYYY-MM-DD)
-function validateDate(date) {
+function validateDate(date,row,index) {
   //replace / with -
   var slashToComma = date.replace(/[/]/g, "-");
   //build date object
@@ -38,8 +38,7 @@ function validateDate(date) {
   if (formated !== "Invalid date") return formated;
   else {
     console.warn(
-      "WARNING! - Invalid Date, Inserted dummy date at row: ",
-      index
+      "WARNING! - Invalid Date, Inserted dummy date at row: "+index
     );
     console.warn(row);
     return new moment("0000/01/01", SQL_DATE_FORMAT).format(SQL_DATE_FORMAT);
