@@ -20,7 +20,7 @@
   * Outptname
 
 If left blank, they will fallback into the default values given
-in the assignment.
+in the assignemnt.
  
 * Default values :
   * Path :  `"./files/jimalaya.xlsx"`

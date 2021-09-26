@@ -83,21 +83,28 @@ module.exports.xlsxToArray = (workSheet) => {
  * This function will validate there are no missing fields
  * in the XLSX sheet.
  *
- * Missing fields are presented as a gap between the cells
- * empty strings do not gets read by the xlsx parser
+ * Missing fields are presented as a gap between the cells.
+ * empty strings do not get read by the xlsx parser
  *
- * In order to detect them
+ * In order to detect them:
+ * Take the range as ASCII letter for exmaple A-C ( 65-67)
+ * and use the % operator which will be equal to the difference.
+ * that's how that every row has all the cells with values.
+ *
+ * -Checking for consecutives values with the % operator
+ * Ex. we use % 3 -> then 1,2,0 [2 and 0 are consecutives].
  *
  * In the case of an error,throw error with the corsponding cell
  *
  * @param {*} range : Table range Ex. -A to G;
  * @param {*} cell  current cell
  * @param {*} prev_validator previous cell to compare to next cell
- * @returns
+ * @returns validator which will be used as prev for next cell.
  */
 const validateNonEmptyFields = (range, cell, prev_validator) => {
   const start = range[0].charCodeAt(0);
   const end = range[1].charCodeAt(0);
+  //minus one for index zero
   const modulo = end - start - 1;
 
   validator = cell.charCodeAt(0) % modulo;

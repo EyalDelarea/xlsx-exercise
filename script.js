@@ -5,12 +5,11 @@ const { exit } = require("process");
 const { xlsxToArray } = require("./Utils/xlsxToArray");
 var prompt = require("prompt");
 
-
 /**
  * Created By Eyal Delarea
- * 
+ *
  * Input - Excel file with specifc schema
- * Output - Excel file ready to be imported to SQL 
+ * Output - Excel file ready to be imported to SQL (headless table)
  */
 
 const DEFAULT_FILE_PATH = "./files/jimalaya.xlsx";
@@ -31,7 +30,7 @@ prompt.get(["path", "clubID", "outputName"], async function (err, result) {
   if (err) throw err;
 
   //Get user input
-  path = result.path === "" ? DEFAULT_FILE_PATH : result.path;
+  path = result.path || DEFAULT_FILE_PATH;
   clubID = result.clubID || DEFAULT_CLUBID;
   outputName = result.outputName || DEFAULT_OUTPUTNAME;
 
@@ -55,11 +54,11 @@ prompt.get(["path", "clubID", "outputName"], async function (err, result) {
   const data = sheetArray.rows;
   data.forEach((user, index) => {
     //index == table ID
-    var userArray = userSchema(user, clubID,index);
-    //Foreign key
-    var userID = userArray[1]
-    var membersip = membershipSchema(userID, user, index);
+    var userArray = userSchema(user, clubID, index);
     users.push(userArray);
+    //Foreign key
+    var userID = userArray[1];
+    var membersip = membershipSchema(userID, user, index);
     memberships.push(membersip);
   });
 
